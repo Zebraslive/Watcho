@@ -25,7 +25,7 @@ export default function TV() {
   return (
     <>
       <Head>
-        <title>{tv.detail.name} | Watcho</title>
+        <title>Watch {tv.detail.name} online free | Watch Free Movies and Tv series online | Official Movieplug</title>
       </Head>
       <SearchBar
         placeholder='Search for TV series'
