@@ -8,7 +8,7 @@ const nextConfig = {
   images: {
     domains: ['source.unsplash.com', 'image.tmdb.org'],
   },
-  reactStrictMode: true,
+  reactStrictMode: false,
 }
 
 module.exports = nextConfig
