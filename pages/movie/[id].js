@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import Head from 'next/head';
-import MovieModal from '../../components/MovieModal'; // Import the MovieModal component
+import VideoPlayer from '../../components/VideoPlayer';
 import FilmCasts from '../../components/FilmCasts'
 import FilmGenres from '../../components/FilmGenres'
 import FilmHeading from '../../components/FilmHeading'
@@ -52,19 +52,9 @@ export default function Movie() {
               tagline={movie.detail.tagline}
               title={movie.detail.title}
             />
-            <button
-      onClick={handleWatchButtonClick}
-      className="mb-4 mr-4 flex cursor-pointer items-center justify-between rounded-md border-none bg-app-greyish-blue py-3 px-8 text-sm font-medium text-app-pure-white hover:bg-app-pure-white hover:text-app-dark-blue"
-    >
-      Watch this Movie
-    </button>
-
-    {/* Video modal */}
-    <MovieModal
-      isOpen={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      imdbId={movie.detail.imdb_id}
-    />
+        
+    <VideoPlayer imdbId={movie.detail.imdb_id} />
+ 
             <FilmRating number={renderRating(movie.detail.vote_average)} />
             <FilmInfo
               media_type='movie'
