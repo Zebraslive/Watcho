@@ -54,7 +54,7 @@ export default function Movie() {
             />
             <button
       onClick={handleWatchButtonClick}
-      className="mb-4 mr-4 flex w-40 cursor-pointer items-center justify-between rounded-md border-none bg-app-greyish-blue py-3 px-8 text-sm font-medium text-app-pure-white hover:bg-app-pure-white hover:text-app-dark-blue"
+      className="mb-4 mr-4 flex cursor-pointer items-center justify-between rounded-md border-none bg-app-greyish-blue py-3 px-8 text-sm font-medium text-app-pure-white hover:bg-app-pure-white hover:text-app-dark-blue"
     >
       Watch this Movie
     </button>
