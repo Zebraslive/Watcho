@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.16",
+    "axios": "^1.4.0",
+    "jquery": "^3.7.0",
     "next": "12.1.0",
     "next-sitemap": "^4.1.8",
     "nprogress": "^0.2.0",
@@ -21,6 +23,7 @@
     "react-modal": "^3.16.1",
     "react-rating": "^2.0.5",
     "recoil": "^0.6.1",
+    "sharp": "^0.32.4",
     "swr": "^1.2.2",
     "uuid": "^8.3.2"
   },
