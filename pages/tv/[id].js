@@ -16,7 +16,29 @@ import { renderLanguage, renderRating, renderStatus } from '../movie/[id]'
 
 export default function TV() {
   const router = useRouter()
-  const { id } = router.query
+  let { id } = router.query
+  let movieSlug = '';
+  let extractedId = null;
+
+  // Check if the id contains any hyphens
+  const hasHyphens = id?.includes('-'); // Use optional chaining operator to avoid accessing properties of undefined
+
+  if (hasHyphens) {
+    // Follow the regular expression-based approach for ID with hyphens
+    const hyphenSeparatedPattern = /-(\d+)$/; // Regular expression to match the ID at the end of the slug
+    const segments = id.split('-');
+    const lastSegment = segments[segments.length - 1];
+    const isLastSegmentOnlyDigits = /^\d+$/.test(lastSegment);
+
+    if (isLastSegmentOnlyDigits) {
+      extractedId = lastSegment;
+      movieSlug = segments.slice(0, -1).join('-'); // Join the remaining elements to form the movie slug
+    }
+  } else {
+    // Consider the entire id as the numeric ID
+    extractedId = id;
+  }
+  id = extractedId;
   const { data: tv, error: tvError } = useSWR(`/api/tv/${id}`, fetcher)
 
   if (tvError) return <div>{tvError}</div>

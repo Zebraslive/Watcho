@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid'
 export const TMDB_ENDPOINT = process.env.TMDB_ENDPOINT
 export const TMDB_API_KEY = process.env.TMDB_API_KEY
 export const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
-
-
+export const TMDB_IMAGE_ENDPOINT_small_wide = 'https://image.tmdb.org/t/p/w780'
+export const TMDB_IMAGE_ENDPOINT_small_poster = 'https://image.tmdb.org/t/p/w185'
 export const pathToSearchAll = '/search/'
 export const pathToSearchMovie = '/search/movie/'
 export const pathToSearchTV = '/search/tv/'
@@ -42,8 +42,8 @@ export const renderResults = (array, Component, media_type) => {
       rating={item.adult}
       src={
         item.backdrop_path
-          ? `${TMDB_IMAGE_ENDPOINT}/${item.backdrop_path}`
-          : `${TMDB_IMAGE_ENDPOINT}/${item.poster_path}`
+          ? `${TMDB_IMAGE_ENDPOINT_small_wide}/${item.backdrop_path}`
+          : `${TMDB_IMAGE_ENDPOINT_small_poster}/${item.poster_path}`
       }
       title={
         item.title ? item.title : item.original_name || item.original_title

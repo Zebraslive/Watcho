@@ -17,12 +17,35 @@ import Loading from '../../components/Loading'
 import SearchBar from '../../components/SearchBar'
 
 import { fetcher, pathToSearchMovie } from '../../utils'
-import { TMDB_IMAGE_ENDPOINT } from '../../utils'
+import { TMDB_IMAGE_ENDPOINT, TMDB_IMAGE_ENDPOINT_small_poster } from '../../utils'
 
 
 export default function Movie() {
   const router = useRouter()
-  const { id } = router.query
+  let {id} = router.query;
+
+  let movieSlug = '';
+  let extractedId = null;
+
+  // Check if the id contains any hyphens
+  const hasHyphens = id?.includes('-'); // Use optional chaining operator to avoid accessing properties of undefined
+
+  if (hasHyphens) {
+    // Follow the regular expression-based approach for ID with hyphens
+    const hyphenSeparatedPattern = /-(\d+)$/; // Regular expression to match the ID at the end of the slug
+    const segments = id.split('-');
+    const lastSegment = segments[segments.length - 1];
+    const isLastSegmentOnlyDigits = /^\d+$/.test(lastSegment);
+
+    if (isLastSegmentOnlyDigits) {
+      extractedId = lastSegment;
+      movieSlug = segments.slice(0, -1).join('-'); // Join the remaining elements to form the movie slug
+    }
+  } else {
+    // Consider the entire id as the numeric ID
+    extractedId = id;
+  }
+  id = extractedId;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { data: movie, error: movieError } = useSWR(`/api/movie/${id}`, fetcher)
 
@@ -52,7 +75,7 @@ export default function Movie() {
             <img
               alt="team"
               className="bg-gray-100 flex-shrink-0 mr-4"
-              src={`${TMDB_IMAGE_ENDPOINT}/${movie.detail.poster_path}`}
+              src={`${TMDB_IMAGE_ENDPOINT_small_poster}/${movie.detail.poster_path}`}
               style={{ maxWidth: '100px' }}
             />
             <div className="mt-6 mb-2 text-center md:mt-0 md:mb-4 md:text-left">

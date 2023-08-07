@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | Watcho</title>
+        <title>Official MoviePlug | Watch Free Movies Online, latest movies streaming</title>
       </Head>
       <SearchBar searchPath={pathToSearchAll} />
 
