@@ -66,7 +66,7 @@ export default function TV() {
               lastAir={tv.detail.last_air_date}
               status={renderStatus(tv.detail.status)}
             />
-            <FilmGenres genres={tv.detail.genres || []} />
+            <FilmGenres genres={tv.detail.genres || []} media_type='tv' />
             <FilmSynopsis synopsis={tv.detail.overview} />
             <FilmCasts casts={tv.credits.cast} />
             <FilmResources

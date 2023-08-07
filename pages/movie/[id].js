@@ -115,7 +115,7 @@ export default function Movie() {
               status={renderStatus(movie.detailstatus)}
               year={renderYear(movie.detail.release_date)}
             />
-            <FilmGenres genres={movie.detail.genres || []} />
+            <FilmGenres genres={movie.detail.genres || []} media_type='movie' />
             <FilmSynopsis synopsis={movie.detail.overview} />
             <FilmCasts casts={movie.credits.cast} />
             <FilmResources
